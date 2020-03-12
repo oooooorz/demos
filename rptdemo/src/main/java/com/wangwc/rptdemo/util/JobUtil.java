@@ -45,8 +45,8 @@ public class JobUtil {
     }
 
     public void schedule() throws SchedulerException {
-        selectList = rptConfig.getSelectList();
-        insertList = rptConfig.getInsertList();
+        selectList = rptConfig.getSelectStmts();
+        insertList = rptConfig.getInsertStmts();
         cronList = rptConfig.getCronList();
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         scheduler.clear();

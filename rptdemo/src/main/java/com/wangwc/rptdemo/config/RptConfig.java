@@ -14,7 +14,7 @@ import java.util.List;
 @PropertySource("classpath:application.yml")
 @ConfigurationProperties(prefix = "report")
 public class RptConfig {
-    private List<String> selectList;
-    private List<String> insertList;
+    private List<String> selectStmts;
+    private List<String> insertStmts;
     private List<String> cronList;
 }

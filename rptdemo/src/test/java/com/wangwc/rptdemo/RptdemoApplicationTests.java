@@ -44,7 +44,7 @@ class RptdemoApplicationTests {
 
     @Test
     void testConfig(){
-        System.out.println(rptConfig.getSelectList().size());
+        System.out.println(rptConfig.getSelectStmts().size());
         System.out.println(rptConfig.getCronList().get(0));
     }
 

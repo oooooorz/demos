@@ -32,12 +32,12 @@ jasypt:
 # 报表参数
 report:
   # 第1组数据
-  selectList[0]: test.selectAllPerson
-  insertList[0]: test.insertStudent
+  selectStmts[0]: test.selectAllPerson
+  insertStmts[0]: test.insertStudent
   cronList[0]: "0/7 * * * * ?" #每隔7秒执行一次
 
   # 第2组数据
-  selectList[1]: test.selectAllStudent
-  insertList[1]: test.insertStudent
+  selectStmts[1]: test.selectAllStudent
+  insertStmts[1]: test.insertStudent
   cronList[1]: "0/11 * * * * ?" #每隔11秒执行一次
 
