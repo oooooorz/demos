@@ -3,7 +3,7 @@ package com.wangwc.rptdemo;
 import com.wangwc.rptdemo.config.RptConfig;
 import com.wangwc.rptdemo.service.impl.RptServiceImpl;
 import com.wangwc.rptdemo.util.EncryptUtil;
-import com.wangwc.rptdemo.util.JobUtil;
+import com.wangwc.rptdemo.scheduler.RptScheduler;
 import org.junit.jupiter.api.Test;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ class RptdemoApplicationTests {
     RptConfig rptConfig;
 
     @Autowired
-    JobUtil jobUtil;
+    RptScheduler rptScheduler;
 
     @Test
     void contextLoads() {
@@ -50,7 +50,7 @@ class RptdemoApplicationTests {
 
     @Test
     void testJob() throws SchedulerException {
-        jobUtil.schedule();
+        rptScheduler.schedule();
     }
 
 }

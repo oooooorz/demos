@@ -1,7 +1,7 @@
-package com.wangwc.rptdemo.util;
+package com.wangwc.rptdemo.scheduler;
 
 import com.wangwc.rptdemo.config.RptConfig;
-import com.wangwc.rptdemo.job.RptJob;
+import com.wangwc.rptdemo.scheduler.jobs.RptJob;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
@@ -13,7 +13,7 @@ import java.util.List;
  * 任务调度工具类
  */
 @Component
-public class JobUtil {
+public class RptScheduler {
 
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
@@ -21,21 +21,21 @@ public class JobUtil {
     @Autowired
     private RptConfig rptConfig;
 
-    List<String> selectList;
+    private List<String> selectStmts;
 
-    List<String> insertList;
+    private List<String> insertStmts;
 
-    List<String> cronList;
+    private List<String> cronList;
 
     public void scheduleJob(Scheduler scheduler) throws SchedulerException {
         for(int i=0; i<cronList.size(); i++){
-            System.out.println(selectList.get(i));
-            System.out.println(insertList.get(i));
+            System.out.println(selectStmts.get(i));
+            System.out.println(insertStmts.get(i));
             System.out.println(cronList.get(i));
             JobDetail jobDetail = JobBuilder.newJob(RptJob.class).
                     withIdentity("job"+i, "group"+i).
-                    usingJobData("select", selectList.get(i)).
-                    usingJobData("insert",insertList.get(i)).build();
+                    usingJobData("select", selectStmts.get(i)).
+                    usingJobData("insert", insertStmts.get(i)).build();
             CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cronList.get(i));
             CronTrigger cronTrigger = (CronTrigger)TriggerBuilder.newTrigger().
                     withIdentity("trigger"+i,"group"+i).
@@ -45,8 +45,8 @@ public class JobUtil {
     }
 
     public void schedule() throws SchedulerException {
-        selectList = rptConfig.getSelectStmts();
-        insertList = rptConfig.getInsertStmts();
+        selectStmts = rptConfig.getSelectStmts();
+        insertStmts = rptConfig.getInsertStmts();
         cronList = rptConfig.getCronList();
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         scheduler.clear();

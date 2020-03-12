@@ -1,6 +1,5 @@
-package com.wangwc.rptdemo.config;
+package com.wangwc.rptdemo.scheduler;
 
-import com.wangwc.rptdemo.util.JobUtil;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -14,12 +13,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 public class SchedulerListener implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
-    JobUtil jobUtil;
+    RptScheduler rptScheduler;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         try{
-            jobUtil.schedule();
+            rptScheduler.schedule();
         }catch(SchedulerException e){
             e.printStackTrace();
         }

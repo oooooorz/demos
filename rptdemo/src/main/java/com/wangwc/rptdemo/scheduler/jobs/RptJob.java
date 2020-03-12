@@ -1,4 +1,4 @@
-package com.wangwc.rptdemo.job;
+package com.wangwc.rptdemo.scheduler.jobs;
 
 import com.wangwc.rptdemo.service.impl.RptServiceImpl;
 import org.quartz.Job;
