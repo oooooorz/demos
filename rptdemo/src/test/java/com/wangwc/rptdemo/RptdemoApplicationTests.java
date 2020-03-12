@@ -28,9 +28,11 @@ class RptdemoApplicationTests {
     void contextLoads() {
     }
 
+    /**
+     * 在此处生成加密后的数据库密码
+     */
     @Test
-    void testUtil(){
-        encryptUtil.encrypt("wang");
+    void testEncrypt(){
         encryptUtil.encrypt("123456");
     }
 

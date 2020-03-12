@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8
     username: test
-    password: ENC(q4zfDFDPIc8aMytWqMtysQ==)
+    password: ENC(q4zfDFDPIc8aMytWqMtysQ==) #ENC用于对加密后的信息解密
     initialSize: 5
     minIdle: 10
     maxActive: 20
@@ -20,7 +20,7 @@ spring:
 
 # mybatis配置
 mybatis:
-  mapper-locations: classpath:mybatis/*Mapper.xml
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
 
@@ -36,8 +36,8 @@ report:
   insertList[0]: test.insertStudent
   cronList[0]: "0/7 * * * * ?" #每隔7秒执行一次
 
-#  # 第2组数据
-#  selectList[1]: test.selectAllStudent
-#  insertList[1]: test.insertStudent
-#  cronList[1]: "0/11 * * * * ?" #每隔11秒执行一次
+  # 第2组数据
+  selectList[1]: test.selectAllStudent
+  insertList[1]: test.insertStudent
+  cronList[1]: "0/11 * * * * ?" #每隔11秒执行一次
 
