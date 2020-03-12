@@ -14,7 +14,7 @@
     <insert id="insertStudent" parameterType="java.util.List">
         insert into student(name, age, sex) values
         <foreach collection="list" item="item" open="(" close=")" separator="),(">
-            #{item.name},#{item.age},#{item.age}
+            #{item.name},#{item.age},#{item.sex}
         </foreach>
     </insert>
 </mapper>
