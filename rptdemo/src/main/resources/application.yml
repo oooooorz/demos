@@ -1,0 +1,43 @@
+# 服务端口号
+server:
+  port: 8080
+
+# 数据库连接池配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8
+    username: test
+    password: ENC(q4zfDFDPIc8aMytWqMtysQ==)
+    initialSize: 5
+    minIdle: 10
+    maxActive: 20
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 设置加密盐值
+jasypt:
+  encryptor:
+    password: wang
+
+# 报表参数
+report:
+  # 第1组数据
+  selectList[0]: test.selectAllPerson
+  insertList[0]: test.insertStudent
+  cronList[0]: "0/7 * * * * ?" #每隔7秒执行一次
+
+#  # 第2组数据
+#  selectList[1]: test.selectAllStudent
+#  insertList[1]: test.insertStudent
+#  cronList[1]: "0/11 * * * * ?" #每隔11秒执行一次
+
