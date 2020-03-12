@@ -29,9 +29,6 @@ public class RptScheduler {
 
     public void scheduleJob(Scheduler scheduler) throws SchedulerException {
         for(int i=0; i<cronList.size(); i++){
-            System.out.println(selectStmts.get(i));
-            System.out.println(insertStmts.get(i));
-            System.out.println(cronList.get(i));
             JobDetail jobDetail = JobBuilder.newJob(RptJob.class).
                     withIdentity("job"+i, "group"+i).
                     usingJobData("select", selectStmts.get(i)).
