@@ -19,8 +19,8 @@ public class RptServiceImpl implements RptService {
     @Transactional(rollbackFor = Exception.class)
     public void createRpt(String selectStmt, String insertStmt){
         List<Map> rptList = sqlSessionTemplate.selectList(selectStmt);
-        for(Map res : rptList){
-            System.out.println(res);
+        for(Map rpt : rptList){
+            System.out.println(rpt);
         }
         System.out.println("查询完成: "+selectStmt);
         int res = sqlSessionTemplate.insert(insertStmt, rptList);

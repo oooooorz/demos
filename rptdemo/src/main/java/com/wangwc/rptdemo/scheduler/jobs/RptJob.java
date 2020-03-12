@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class RptJob implements Job {
 
     @Autowired
-    private RptServiceImpl testService;
+    private RptServiceImpl rptService;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -21,6 +21,6 @@ public class RptJob implements Job {
         String jobGroup = jobExecutionContext.getJobDetail().getKey().getGroup();
         System.out.println("jobname: "+jobName);
         System.out.println("jobgroup: "+jobGroup);
-        testService.createRpt(selectStmt, insertStmt);
+        rptService.createRpt(selectStmt, insertStmt);
     }
 }
